@@ -1,0 +1,123 @@
+############################################################################################################################### Kaden Air Conditioner
+      powermon_todays_cost:
+        friendly_name: "Power Monitor Todays cost"
+        value_template: '{{ ((states.sensor.power_monitor_energy.state | float) * 0.32) | round(2)}}'
+        unit_of_measurement: 'Dollars'
+      powermon_yesterday_cost:
+        friendly_name: "Power Monitor Yesterday cost"
+        value_template: '{{ ((states.sensor.yesterday_ac_energy_total.state | float) * 0.32) | round(2)}}'
+        unit_of_measurement: 'Dollars'
+      powermon_amps:
+        friendly_name: "Powermon Current "
+        value_template: '{{ ((states.sensor.power_monitor_power.state | float) / (states.sensor.power_monitor_voltage.state | float)) | round(3)}}'
+        unit_of_measurement: 'Amps'
+#
+      ac_month_bill:
+        friendly_name: "cost of using AC this month"
+        value_template: '{{ ((states.switch.plug_158d0001fa63ab.attributes.power_consumed / 1000) * 0.32) | round(2)}}'
+        unit_of_measurement: 'Dollars'
+      ac_kwh:
+        friendly_name: "Total kWh"
+        value_template: '{{ (states.switch.plug_158d0001fa63ab.attributes.power_consumed / 1000) | round(3)}}'
+        unit_of_measurement: 'kW/h'
+      ac_wh:
+        friendly_name: "Watt hours"
+        value_template: '{{ states.switch.plug_158d0001fa63ab.attributes.power_consumed }}'
+        unit_of_measurement: 'W/h'
+#
+      ac_daily_cost:
+        friendly_name: "AC Todays cost"
+        value_template: '{{ ((states.switch.plug_158d0001fa63ab.attributes.power_consumed / 1000) * 0.32) | round(2)}}'
+        unit_of_measurement: 'Dollars'
+#
+#
+      current_power:
+        friendly_name: "Air Con Power Usage "
+        value_template: '{{ states.switch.plug_158d0001fa63ab.attributes.load_power }}'
+        unit_of_measurement: 'Watts'
+#
+      ac_current_amps:
+        friendly_name: "Air Con Current "
+        value_template: '{{ (states.switch.plug_158d0001fa63ab.attributes.load_power / 240) | round(3)}}'
+        unit_of_measurement: 'Amps'
+#
+#
+      ac_current_running_cost:
+        friendly_name: "Air Con Running cost P/h "
+        value_template: '{{ ((states.switch.plug_158d0001fa63ab.attributes.load_power * 0.32) / 10) | round(3)}}'
+        unit_of_measurement: 'cents'
+############################################################################################################################## Washing machine
+      washer_current_power:
+        friendly_name: "Washer Dryer Power Usage "
+        value_template: '{{ states.switch.plug_158d0001deb318.attributes.load_power }}'
+        unit_of_measurement: 'Watts'
+#
+      washer_current_amps:
+        friendly_name: "Washer Dryer Current "
+        value_template: '{{ (states.switch.plug_158d0001deb318.attributes.load_power / 240) | round(3)}}'
+        unit_of_measurement: 'Amps'
+#
+      washer_kwh:
+        friendly_name: "Total kWh"
+        value_template: '{{ (states.switch.plug_158d0001deb318.attributes.power_consumed / 1000) | round(3)}}'
+        unit_of_measurement: 'kW/h'
+#
+      washer_current_running_cost:
+        friendly_name: "Washer Running cost P/h "
+        value_template: '{{ ((states.switch.plug_158d0001deb318.attributes.load_power * 0.32) / 10) | round(3)}}'
+        unit_of_measurement: 'cents'
+#
+      washer_month_bill:
+        friendly_name: "cost of using washer this month"
+        value_template: '{{ ((states.switch.plug_158d0001deb318.attributes.power_consumed / 1000) * 0.32) | round(2)}}'
+        unit_of_measurement: 'Dollars'
+############################################################################################################################### Sun Attributes
+      sun_angle:
+        friendly_name: "angle of the sun "
+        value_template: '{{ states.sun.sun.attributes.elevation }}'
+        unit_of_measurement: '°'
+############################################################################################################################### Living roon power monitor attributes
+      liv_kit_current_power:
+        friendly_name: "Livingroom Power Usage "
+        value_template: '{{ states.switch.plug_158d00024a54e6.attributes.load_power }}'
+        unit_of_measurement: 'Watts'
+#
+      liv_kit_current_amps:
+        friendly_name: "Livingroom Current "
+        value_template: '{{ (states.switch.plug_158d00024a54e6.attributes.load_power / 240) | round(3)}}'
+        unit_of_measurement: 'Amps'
+#
+############################################################################################################################### Power Totals
+      total_all_power:
+        friendly_name: "Total Power Usage "
+        value_template: '{{ ((states.sensor.air_conditioner_power.state | float) + (states.sensor.liv_kit_current_power.state | float) +(states.sensor.current_power.state | float)) | round(3)}}'
+        unit_of_measurement: 'W'
+############################################################################################################################### Playstation 4
+      ps4_title_id:
+        friendly_name: "PS4 Title id"
+        value_template: '{{ states.media_player.playstation_4.attributes.media_content_id }}'
+        entity_id:
+          - media_player.playstation_4
+#
+      ps4_title_name:
+        friendly_name: "PS4 Media Title"
+        value_template: '{{ states.media_player.playstation_4.attributes.media_title }}'
+        entity_id:
+          - media_player.playstation_4
+############################################################################################################################### Universal media player
+      now_playing_name:
+        friendly_name: "Now Playing"
+        value_template: '{{ states.media_player.test_universal.attributes.media_title }}'
+        entity_id:
+          - media_player.test_universal
+      active_app_name:
+        friendly_name: "App Name "
+        value_template: '{{ states.media_player.test_universal.attributes.app_name }}'
+        entity_id:
+          - media_player.test_universal
+      active_friendly_name:
+        friendly_name: "Source Active "
+        value_template: '{{ states.media_player.test_universal.attributes.active_child }}'
+        entity_id:
+          - media_player.test_universal
+#

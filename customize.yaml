@@ -1,0 +1,355 @@
+light.yeelight_rgb_7811dc6840f6:
+  friendly_name: Bedroom Lamp
+  icon: mdi:track-light
+sensor.weather_dewpoint_temperature:
+  friendly_name: Dewpoint
+  icon: mdi:water
+sensor.weather_wind_speed:
+  friendly_name: Wind speed
+  icon: mdi:weather-windy
+sensor.weather_wind_direction:
+  friendly_name: 'Wind angle '
+  icon: mdi:angle-acute
+sensor.weather_temperature:
+  friendly_name: Outdoor Temperature
+sensor.weather_humidity:
+  friendly_name: Outdoor Humidity
+  icon: mdi:water-percent
+sensor.weather_pressure:
+  friendly_name: Air Pressure
+  icon: mdi:arrow-collapse-all
+sensor.weather_precipitation:
+  friendly_name: Precipitation
+  icon: mdi:weather-lightning-rainy
+light.gateway_light_34ce00fb68e0:
+  friendly_name: Night Light
+  icon: mdi:orbit
+light.ledrgb_nodemcu02:
+  friendly_name: Bench Light
+  icon: mdi:ceiling-light
+light.ledrgb2_nodemcu03:
+  friendly_name: TV Light
+  icon: mdi:television-box
+media_player.43put680179:
+  friendly_name: TV Google Cast
+media_player.philips_tv_yewwwww:
+  friendly_name: Philips TV
+group.all_automations:
+  hidden: false
+group.all_scripts:
+  hidden: false
+sensor.bom_port_macquarie_wind_direction:
+  friendly_name: Wind Direction
+  icon: mdi:compass-outline
+device_tracker.286c07f0ee85:
+  friendly_name: Xiaomi Air Con Companion Gateway
+sensor.kitchen_humidity:
+  icon: mdi:water-percent
+device_tracker.5ccf7ff96715:
+  icon: fan
+switch.plug_158d0001fa63ab:
+  icon: mdi:power
+switch.kitchen_fan:
+  icon: mdi:fan
+sensor.bathroom_dht_11_humidity:
+  icon: mdi:water-percent
+light.kitchen_lamp:
+  icon: mdi:desk-lamp
+binary_sensor.door_window_sensor_158d0001de8dff:
+  icon: mdi:window-closed
+binary_sensor.door_window_sensor_158d0001de8cdc:
+  icon: mdi:window-closed
+binary_sensor.door_window_sensor_158d0001e45327:
+  icon: mdi:window-closed
+binary_sensor.door_window_sensor_158d0001de8c6b:
+  icon: mdi:door
+sensor.ac_current_running_cost:
+  icon: mdi:home-currency-usd
+sensor.ac_daily_cost:
+  icon: mdi:home-currency-usd
+sensor.washer_current_running_cost:
+  icon: mdi:home-currency-usd
+sensor.ac_month_bill:
+  icon: mdi:home-currency-usd
+sensor.washer_month_bill:
+  icon: mdi:home-currency-usd
+sensor.ac_current_amps:
+  icon: mdi:auto-upload
+sensor.washer_current_amps:
+  icon: mdi:auto-upload
+sensor.current_power:
+  friendly_name: Appliance Power Usage
+  icon: mdi:power-socket-au
+sensor.washer_current_power:
+  icon: mdi:power-socket-au
+sensor.sun_angle:
+  icon: mdi:angle-acute
+light.bathroom_lamp:
+  icon: mdi:lamp
+binary_sensor.switch_158d0001714366:
+  icon: mdi:weather-night
+switch.extension_cable:
+  friendly_name: Kettle Power
+  icon: mdi:kettle
+sensor.speedtest_upload:
+  icon: mdi:upload-network
+sensor.speedtest_download:
+  icon: mdi:download-network
+sensor.speedtest_ping:
+  icon: mdi:pulse
+script.1532659272895:
+  icon: mdi:fire
+script.1532998040612:
+  icon: mdi:kettle
+switch.plug_158d0001deb318:
+  icon: mdi:tumble-dryer
+script.1532659074431:
+  icon: mdi:candle
+script.1532671463982:
+  icon: mdi:record-player
+script.1533005467987:
+  icon: mdi:record-player
+script.1533005431628:
+  icon: mdi:record-player
+script.1532657541787:
+  icon: mdi:record-player
+script.1532658800791:
+  icon: mdi:heart
+script.camera:
+  icon: mdi:cctv
+script.1532564943356:
+  icon: mdi:heart
+automation.tv_off:
+  icon: mdi:television-classic-off
+automation.tv_on:
+  icon: mdi:television-classic
+automation.tv_toggle:
+  icon: mdi:television-classic
+script.tvoff:
+  icon: mdi:television-classic-off
+script.tvon:
+  icon: mdi:television-classic
+script.tv7:
+  entity_picture: /local/seven.png
+script.tv7flix:
+  entity_picture: /local/7flix.png
+script.tv7mate:
+  entity_picture: /local/7mate.png
+script.tv7two:
+  entity_picture: /local/7two.png
+script.tv9gem:
+  entity_picture: /local/9gem.png
+script.tv9go:
+  entity_picture: /local/9go.png
+script.tv9life:
+  entity_picture: /local/9life.png
+script.tv9nine:
+  entity_picture: /local/nine.png
+script.tvabc:
+  entity_picture: /local/abc.png
+script.tvabccomedy:
+  entity_picture: /local/abccomedy.png
+script.tvabckids:
+  entity_picture: /local/abckids.png
+script.tvabcme:
+  entity_picture: /local/abcme.png
+script.tvabcnews:
+  entity_picture: /local/abcnews.png
+script.tveleven:
+  entity_picture: /local/eleven.png
+script.tvfood:
+  entity_picture: /local/food.png
+script.tvfoxnews:
+  entity_picture: /local/foxnews.png
+script.tvnitv:
+  entity_picture: /local/nitv.png
+script.tvracing:
+  entity_picture: /local/racing.png
+script.tvredbull:
+  entity_picture: /local/redbull.png
+script.tvsbs:
+  entity_picture: /local/sbs.png
+script.tvsbsvice:
+  entity_picture: /local/vice.png
+script.tvten:
+  entity_picture: /local/ten.png
+script.tvone:
+  entity_picture: /local/onehd.png
+sensor.bom_port_macquarie_wind_speed_kmh:
+  friendly_name: Wind Speed
+  icon: mdi:weather-windy
+script.radioiheartdance:
+  entity_picture: /local/ihdance.png
+script.radiotriplej:
+  entity_picture: /local/triplej.png
+media_player.kodi_libreeleclocal:
+  friendly_name: Kodi - Philips TV
+script.tvhgtv:
+  entity_picture: /local/hgtv.jpg
+sensor.caltex_woolworths_lake_cathie_e10:
+  friendly_name: E10
+  icon: mdi:dice-d10
+sensor.caltex_woolworths_lake_cathie_p95:
+  friendly_name: P95
+  icon: mdi:numeric-9-plus-box-multiple-outline
+sensor.caltex_woolworths_lake_cathie_p98:
+  friendly_name: P98
+  icon: mdi:gas-station
+sensor.caltex_woolworths_lakewood_e10:
+  friendly_name: E10
+sensor.caltex_woolworths_lakewood_p95:
+  friendly_name: P95
+  icon: mdi:numeric-9-plus-box-multiple-outline
+sensor.caltex_woolworths_lakewood_p98:
+  friendly_name: P98
+  icon: mdi:gas-station
+sensor.independent_bonny_hills_dl:
+  friendly_name: DL
+  icon: mdi:fuel
+sensor.independent_bonny_hills_p95:
+  friendly_name: P95
+  icon: mdi:numeric-9-plus-box-multiple-outline
+sensor.independent_bonny_hills_u91:
+  friendly_name: U91
+  icon: mdi:gas-cylinder
+sensor.independent_kew_dl:
+  friendly_name: DL
+  icon: mdi:fuel
+sensor.independent_kew_p95:
+  friendly_name: P95
+  icon: mdi:numeric-9-plus-box-multiple-outline
+sensor.independent_kew_p98:
+  friendly_name: P98
+  icon: mdi:gas-station
+sensor.independent_kew_u91:
+  friendly_name: U91
+  icon: mdi:gas-cylinder
+sensor.independent_laurieton_dl:
+  friendly_name: DL
+  icon: mdi:fuel
+sensor.independent_laurieton_p95:
+  friendly_name: P95
+  icon: mdi:numeric-9-plus-box-multiple-outline
+sensor.independent_laurieton_u91:
+  friendly_name: U91
+  icon: mdi:gas-cylinder
+sensor.mobil_fuel_north_haven_dl:
+  friendly_name: DL
+  icon: mdi:fuel
+sensor.mobil_fuel_north_haven_p98:
+  friendly_name: P98
+  icon: mdi:gas-station
+sensor.mobil_fuel_north_haven_u91:
+  friendly_name: U91
+  icon: mdi:gas-cylinder
+sensor.riverview_service_centre_dl:
+  friendly_name: DL
+  icon: mdi:fuel
+sensor.riverview_service_centre_p98:
+  friendly_name: P98
+  icon: mdi:gas-station
+sensor.riverview_service_centre_u91:
+  friendly_name: U91
+  icon: mdi:gas-cylinder
+switch.kaden_led:
+  icon: mdi:light-switch
+climate.kaden_air_conditioner:
+  icon: mdi:air-conditioner
+  operation_list:
+  - 'off'
+  - idle
+  - cool
+  - heat
+input_boolean.switch_tv:
+  icon: mdi:television-classic
+switch.remote_freeview_on:
+  friendly_name: Freeview+
+  entity_picture: /local/freeviewbanner.jpg
+input_boolean.kodi_tv_state:
+  hidden: true
+  homebridge_hidden: true
+media_player.kodi__philips_tv:
+  hidden: false
+  homebridge_hidden: true
+media_player.test_universal:
+  friendly_name: Living Room TV
+  homebridge_name: Kodi
+  homebridge_media_player_switch: on_off
+switch.remote_ir_netflix:
+  friendly_name: Netflix
+  entity_picture: /local/netflixbanner.jpg
+switch.remote_ir_xbox:
+  friendly_name: Xbox One
+  entity_picture: /local/xboxbanner.jpg
+switch.remote_ir_ps4:
+  friendly_name: Playstation 4
+  entity_picture: /local/ps4banner.jpg
+switch.remote_ir_kodi:
+  friendly_name: Kodi
+  entity_picture: /local/kodibanner.jpg
+script.tvfs1:
+  entity_picture: /local/fs1.jpg
+script.tvdisc:
+  entity_picture: /local/disc.jpg
+script.tvdiscscience:
+  entity_picture: /local/science.png
+script.tvdiscshed:
+  entity_picture: /local/shed.png
+script.tvdiscturbo:
+  entity_picture: /local/turbo.jpg
+script.tvfs2:
+  entity_picture: /local/fs2.jpg
+script.tvh2:
+  entity_picture: /local/h2.jpg
+script.tvhistory:
+  entity_picture: /local/history.jpg
+script.tvmtv:
+  entity_picture: /local/mtv.png
+script.tvmtvclassic:
+  entity_picture: /local/mtvclas.png
+script.tvmtvdance:
+  entity_picture: /local/mtvd.png
+script.tvmtvhits:
+  entity_picture: /local/mtvhits.png
+script.tvmtvmusic:
+  entity_picture: /local/mtv2.png
+script.tvmtvrocks:
+  entity_picture: /local/mtvr.png
+script.tvnatgeo:
+  entity_picture: /local/natgeo.jpg
+script.tvngwild:
+  entity_picture: /local/wild.jpg
+script.tvshowtime:
+  entity_picture: /local/sho.png
+script.tvtlc:
+  entity_picture: /local/tlc.jpg
+input_boolean.switch_tv_channel_up:
+  friendly_name: Next Channel
+  icon: mdi:chevron-up
+input_boolean.switch_tv_channel_down:
+  friendly_name: Prev Channel
+  icon: mdi:chevron-down
+sensor.powermon_todays_cost:
+  friendly_name: A/C Daily Cost
+  icon: mdi:home-currency-usd
+sensor.powermon_amps:
+  friendly_name: 'A/C Load '
+  icon: mdi:auto-upload
+sensor.power_monitor_power:
+  friendly_name: Air Con Power
+  icon: mdi:power-socket-au
+sensor.realistic_kitchen_temperature:
+  icon: mdi:thermometer-lines
+sensor.total_all_power:
+  friendly_name: 'Total power currently in use '
+  icon: mdi:home-currency-usd
+switch.power_monitor:
+  friendly_name: Air Con Isolator
+  icon: mdi:power-settings
+sensor.now_playing_name:
+  icon: mdi:filmstrip
+input_boolean.switch_chromecast:
+  icon: mdi:google-chrome
+sensor.powermon_yesterday_cost:
+  friendly_name: Yesterdays Total
+  icon: mdi:home-currency-usd

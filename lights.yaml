@@ -1,0 +1,55 @@
+
+  - platform: mqtt
+    name: "Kitchen Lamp"
+    state_topic: "stat/cheyneslamp/POWER"
+    command_topic: "cmnd/cheyneslamp/power"
+    qos: 2
+    payload_on: "ON"
+    payload_off: "OFF"
+#
+  - platform: mqtt
+    name: "Bathroom Lamp"
+    state_topic: "stat/bathroomlamp/POWER"
+    command_topic: "cmnd/bathroomlamp/power"
+    qos: 2
+    payload_on: "ON"
+    payload_off: "OFF"
+#
+  - platform: mqtt
+    name: "ledrgb nodemcu02" 
+    command_topic: "cmnd/ledrgb/power" 
+    state_topic: "stat/ledrgb/POWER" 
+    qos: 2
+    payload_on: "ON"
+    payload_off: "OFF"
+    rgb_state_topic: "stat/ledrgb/color" 
+    rgb_command_topic: "cmnd/ledrgb/color" 
+    brightness_state_topic: "stat/ledrgb/dimmer" 
+    brightness_command_topic: "cmnd/ledrgb/dimmer" 
+    retain: true
+#
+  - platform: mqtt
+    name: "ledrgb2 nodemcu03" 
+    command_topic: "cmnd/ledrgb2/power" 
+    state_topic: "stat/ledrgb2/POWER" 
+    qos: 2
+    payload_on: "ON"
+    payload_off: "OFF"
+    rgb_state_topic: "stat/ledrgb2/color" 
+    rgb_command_topic: "cmnd/ledrgb2/color" 
+    brightness_state_topic: "stat/ledrgb2/dimmer" 
+    brightness_command_topic: "cmnd/ledrgb2/dimmer" 
+    retain: true
+#
+  - platform: mqtt
+    name: "Mels Light" 
+    command_topic: "cmnd/melslight/power" 
+    state_topic: "stat/melslight/POWER" 
+    qos: 2
+    payload_on: "ON"
+    payload_off: "OFF"
+    rgb_state_topic: "stat/melslight/color" 
+    rgb_command_topic: "cmnd/melslight/color" 
+    brightness_state_topic: "stat/melslight/dimmer" 
+    brightness_command_topic: "cmnd/melslight/dimmer" 
+    retain: true

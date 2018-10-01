@@ -1,0 +1,143 @@
+
+  - platform: universal
+    name: Test Universal
+    state_template: >
+      {% if is_state('switch.remote_ir_kodi', 'idle')
+      and is_state('switch.remote_ir_ps4', 'off')
+      and is_state('switch.remote_freeview_on', 'off')
+      and is_state('input_boolean.switch_chromecast', 'off')
+      and is_state('switch.remote_ir_xbox', 'off')
+      and is_state('switch.remote_ir_netflix', 'off') %}
+      off
+      {% else %}
+      {{ states('media_player.live_tv') }}
+      {% endif %}
+    children:
+      - media_player.43put680179
+      - media_player.playstation_4
+      - media_player.xbox_one
+      - media_player.kodi__philips_tv
+      - media_player.live_tv
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.remote_ir_power
+      turn_off:
+        service: media_player.turn_off
+        data:
+          entity_id: media_player.playstation_4
+        service: media_player.turn_off
+        data:
+          entity_id: media_player.xboxone
+        service: media_player.turn_off
+        data:
+          entity_id: media_player.kodi__philips_tv
+        service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.switch_chromecast
+        service: media_player.turn_off
+        data:
+          entity_id: media_player.live_tv
+      volume_up:
+        service: media_player.volume_up
+        data:
+          entity_id: media_player.live_tv
+      volume_down:
+        service: media_player.volume_down
+        data:
+          entity_id: media_player.live_tv
+      volume_mute:
+        service: media_player.volume_mute
+        data:
+          entity_id: media_player.live_tv
+      select_source:
+        service: media_player.select_source
+        data_template:
+          entity_id: media_player.live_tv
+          source: '{{ source }}'
+      volume_set:
+        service: media_player.volume_set
+        data_template:
+          entity_id: media_player.live_tv
+          volume_level: '{{ volume_level }}'
+
+    attributes:
+      state: media_player.live_tv
+      is_volume_muted: media_player.live_tv|mute
+      volume_level: media_player.live_tv|volume_level
+      source: media_player.live_tv|source
+      source_list: media_player.live_tv|source_list
+#
+  - platform: kodi
+    name: Kodi - Philips TV
+    host: 10.0.4.57
+    turn_on_action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.kodi_tv_state
+    - service: wake_on_lan.send_magic_packet
+      data:
+        mac: b8:27:eb:95:ad:ca
+        broadcast_address: 10.0.4.57
+    - service: media_player.kodi_call_method
+      data:
+        entity_id: media_player.kodi__philips_tv
+        method: Addons.ExecuteAddon
+        addonid: script.json-cec
+        params:
+          command: activate
+    - service: media_player.kodi_call_method
+      data:
+        entity_id: media_player.kodi
+        method: Addons.ExecuteAddon
+        addonid: script.json-cec
+        params:
+          command: activate
+    turn_off_action:
+    - service: media_player.media_stop
+      data:
+        entity_id: media_player.kodi__philips_tv
+    - service: media_player.kodi_call_method
+      data:
+        entity_id: media_player.kodi__philips_tv
+        method: Addons.ExecuteAddon
+        addonid: script.json-cec
+        params:
+          command: standby
+    - service: media_player.kodi_call_method
+      data:
+        entity_id: media_player.kodi__philips_tv
+        method: System.Suspend
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.kodi_tv_state
+#---------------------------------------------------------------
+  - platform: broadlink
+    name: Philips IR Control
+    host: 10.0.4.122
+    mac: !secret broadlink_rm3_mini_mac
+    ircodes_ini: 'broadlink_media_codes/philips.ini'
+    ping_host: 10.0.4.123
+#
+  - platform: ps4
+    host: http://10.0.4.86:3031
+    ps4_ip: 10.0.4.2
+    name: PlayStation 4
+    local_store: games
+#
+  - platform: xboxone
+    device: !secret xbox_id
+    name: Xbox One
+#
+
+  - platform: philips_2016
+    name: Live TV
+    host: 10.0.4.123
+    username: !secret tv_user
+    password: !secret tv_password
+#
+# Mopidy addon for hass.io
+#  - platform: mpd
+#    host: 10.0.4.86
+#

@@ -1,0 +1,156 @@
+
+  basic_view:
+    name: Basic
+    view: yes
+    entities:
+      - group.bed_living
+      - group.kitchen
+      - group.bathroom
+      - group.laundry
+      - group.airconditioner
+      - history_graph.temperature
+      - history_graph.humidity
+      - history_graph.washer_dryer_power_usage
+      - history_graph.kitchen_motion
+      - history_graph.bathroom_motion
+      - group.all_scripts
+  media_playing:
+    name: Now Playing
+    icon: mdi:youtube
+    entities:
+      - sensor.now_playing_name
+      - sensor.active_app_name
+      - sensor.active_friendly_name
+  automation_view:
+    name: Automation
+    view: yes
+    entities:
+      - group.all_automations
+      - group.wireless_switch
+      - group.speedtest
+      - group.deviceetection
+      - group.time
+      - group.all_devices
+  media_players_view:
+    name: Media Players
+    view: yes
+    entities:
+      - media_player.philips_tv_yewwwww
+      - media_player.kodi_libreeleclocal
+      - input_text.text1
+      - input_select.who_cooks
+      - media_player.chromecast_kitchen
+      - media_player.43put680179
+  Weather_view:
+    name: Weather Conditions
+    view: yes
+    entities:
+      - group.weather
+  Bed Living:
+    name: Bed and Living Room
+    icon: mdi:Bed
+    entities:
+      - binary_sensor.door_window_sensor_158d0001de8c6b
+      - binary_sensor.door_window_sensor_158d0001de8cdc
+      - light.bedroom_rgb_lamp
+      - light.yeelight_rgb_7811dc6840f6
+      - light.ledrgb_nodemcu02
+      - light.ledrgb2_nodemcu03
+      - input_select.led_scheme
+      - sensor.illumination_158d0001a250d8
+      - binary_sensor.switch_158d0001714366
+  Kitchen:
+    name: Kitchen
+    icon: mdi:Kitchen
+    entities:
+      - switch.kitchen_fan
+      - binary_sensor.motion_sensor_158d0001a250d8
+      - history_graph.kitchen_motion
+      - binary_sensor.door_window_sensor_158d0001e45327
+      - light.kitchen_lamp
+      - sensor.illumination_34ce00fb68e0
+      - sensor.kitchen_temperature
+      - sensor.kitchen_humidity
+      - history_graph.ac_power_usage
+      - switch.extension_cable
+  Bathroom:
+    name: Bathroom
+    icon: mdi:Bath
+    entities:
+      - light.bathroom_lamp
+      - light.gateway_light_34ce00fb68e0
+      - binary_sensor.motion_sensor_158d0001a24ff6
+      - binary_sensor.door_window_sensor_158d0001de8dff
+      - sensor.illumination_158d0001a24ff6
+      - sensor.bathroom_dht_11_temperature
+      - sensor.bathroom_dht_11_humidity
+      - history_graph.bathroom_motion
+      - history_graph.washer_dryer_power_usage
+  Airconditioner:
+    name: Air Conditioner
+    icon: mdi:ac
+    entities:
+      - switch.plug_158d0001fa63ab
+      - sensor.ac_current_amps
+      - sensor.current_power
+      - sensor.ac_current_running_cost
+      - sensor.daily_cost_of_ac
+      - sensor.ac_month_bill
+  Laundry:
+    name: Laundry
+    icon: mdi:laundry
+    entities:
+      - switch.plug_158d0001deb318
+      - sensor.washer_current_amps
+      - sensor.washer_current_power
+      - sensor.washer_current_running_cost
+      - sensor.washer_month_bill
+  Wireless Switch:
+    name: Wireless Switch
+    icon: mdi:wifi
+    entities:
+      - binary_sensor.wall_switch_left_158d0001640b0d
+      - binary_sensor.wall_switch_right_158d0001640b0d
+      - binary_sensor.wall_switch_both_158d0001640b0d
+  Time:
+    name: Time and date
+    icon: mdi:clock
+    entities:
+      - sensor.time
+      - sensor.date
+      - sensor.date__time
+  weather:
+    name: Current Weather Conditions
+    icon: mdi:sun
+    entities:
+      - sensor.weather_symbol
+      - sun.sun
+      - sensor.sun_angle
+      - sensor.weather_temperature
+      - sensor.weather_humidity
+      - sensor.weather_dewpoint_temperature
+      - sensor.weather_pressure
+      - sensor.weather_precipitation
+      - sensor.weather_fog
+      - sensor.weather_cloudiness
+      - sensor.weather_wind_speed
+      - sensor.bom_port_macquarie_wind_direction
+      - sensor.weather_wind_direction
+  Deviceetection:
+    name: Devices
+    entities:
+      - device_tracker.ipadpro
+      - sensor.cheynes_ipad_battery_level
+      - sensor.cheynes_ipad_battery_state
+      - sensor.iphone_battery_level
+      - sensor.iphone_battery_state
+  Speedtest:
+    name: Internet Speed Test
+    icon: mdi:speedometer
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
+#
+#
+#

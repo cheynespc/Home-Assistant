@@ -1,0 +1,158 @@
+
+  - platform: mqtt
+    name: "Kitchen Fan"
+    command_topic: "cmnd/kitchenfan/power"
+    state_topic: "stat/kitchenfan/POWER"
+    qos: 2
+    payload_on: "ON"
+    payload_off: "OFF"
+#
+  - platform: mqtt
+    name: "Extension Cable"
+    command_topic: "cmnd/extcable1/power"
+    state_topic: "stat/extcable1/POWER"
+    qos: 2
+    payload_on: "ON"
+    payload_off: "OFF"
+#
+  - platform: mqtt
+    name: "Power Monitor"
+    command_topic: "cmnd/powermon/power"
+    state_topic: "stat/powermon/POWER"
+    qos: 2
+    payload_on: "ON"
+    payload_off: "OFF"
+#
+#######################################################   IR CONTROL   ################################################
+#
+# Broadlink Mini RM 3 Blackbean IR MODULE #############
+  - platform: broadlink
+    host: 10.0.4.122
+    mac: !secret broadlink_rm3_mini_mac
+    timeout: 15
+    switches:
+############################################################################################################################### IR Kaden Air Conditioning
+      kaden_led:
+        friendly_name: "Kaden Led"
+        command_on: 'JgDKAJOQEzQTEBM0FDMTEBQzExAUMxQQEzMUEBMQFDMTEBQzFBATMxQzFDMUMxMQFDMUDxQzFBATEBMRExATNBMQFDMTEBQzFBATMxQQExATNBQPFDMUEBMzFBATNBMzFBATNBMQFKmTjxQzFBATNBMzFBATMxQQEzQTEBQzFA8UEBM0ExAUMxMQFDMUMxM0EzMUEBM0ExAUMxMQFBATEBQQEzMUEBM0ExAUMxMQFDMUEBMQEzQTEBQzFA8UMxQQEzMUMxQQEzMUEBMADQUAAAAAAAAAAAAAAAAAAA=='
+        command_off: 'JgDKAJOQEzQTEBM0FDMTEBQzExAUMxQQEzMUEBMQFDMTEBQzFBATMxQzFDMUMxMQFDMUDxQzFBATEBMRExATNBMQFDMTEBQzFBATMxQQExATNBQPFDMUEBMzFBATNBMzFBATNBMQFKmTjxQzFBATNBMzFBATMxQQEzQTEBQzFA8UEBM0ExAUMxMQFDMUMxM0EzMUEBM0ExAUMxMQFBATEBQQEzMUEBM0ExAUMxMQFDMUEBMQEzQTEBQzFA8UMxQQEzMUMxQQEzMUEBMADQUAAAAAAAAAAAAAAAAAAA=='
+#
+      kaden_power:
+        friendly_name: "Kaden Power"
+        command_on: 'JgDIABQzFA8UMxQzFA8UEBM0ExAUEBMzFBATEBQzFDMTEBQzFA8UEBQzEzMUMxQzFDMUMxMzFDMUEBMQFBATEBQPFBATNBMzFBATEBQzFDMTEBQQExAUEBMzFDMUEBMQFDMTMxSpk5ATNBMQFDMTNBMQFBATMxQQExAUMxQPFBATNBMzFBATNBMQFBATMxQzFDMUMxM0EzMUMxQzFA8UEBMQFBATEBQPFDMUMxQQExATNBMzFBATEBQQExAUMxM0ExAUEBMzFDMUAA0F'
+        command_off: 'JgDKAJOQEzMUEBM0EzMUEBMQFDMUEBMQEzQTEBQQEzMUMxQQEzMUEBM0EzMUMxQzExAUMxQzFDMTEBQQExATERMzFBATEBQzEzQTMxQQExAUEBMQFBATEBMQFBATNBMzFDMUMxM0E6qSkBQzExAUMxQzExAUEBMzFBAUDxQzFBATEBQzEzQTEBQzExAUMxQzEzQTMxQQEzQTMxQzFBATEBQPFBATNBMQFBATMxQzFDMTEBQQExAUEBMQExAUEBMQFDMUMxM0EzMUMxQADQUAAAAAAAAAAAAAAAAAAA=='
+#
+      kaden_turbo:
+        friendly_name: "Kaden Turbo"
+        command_on: 'JgDKAJOPFDMUEBI0FDMUEBMzFBATNBMQFDMTEBQQEzQTEBQzExAUMxQzEzQTMxQQEzQTEBQzExAUEBMQExETMxQQEzQTEBM0ExAUMxMQFBATEBQzFA8UEBM0ExATNBM0EzMUEBM0E6qSkBM0ExAUMxM0ExATNBMQFDMUEBMzFBATEBQzExAUMxQQEzMUMxQzFDMTEBQzFBATMxQQExAUEBMQEzQTEBQzExATNBQQEzMUEBMQFBATMxQQEhEUMxMQFDMUMxQzExAUMxQADQUAAAAAAAAAAAAAAAAAAA=='
+        command_off: 'JgDKAJOQEzMUEBQzEzMUEBQzExAUMxQPFDMUEBMQFDMTEBQzFA8UMxQzFDMUMxMQFDMUDxQzFBATEBQPFBATNBMQFDMTEBQzFA8UMxQQExAUDxQzFBATEBQzExAUMxQzEzQTEBQzFKmTjxQzFA8UMxQzFA8UMxQQEzMUEBM0ExAUDxQzFBATMxQQFDMTMxQzFDMUEBMzFBATMxQQFA8UEBMQFDMUDxQzFBATMxQQEzMUEBQPFBATNBMQFA8UMxQQEzMUMxQzFBATMxQADQUAAAAAAAAAAAAAAAAAAA=='
+#
+############################################################################################################################### ir tv controls and power
+      remote_freeview_on:
+        friendly_name: "Live TV"
+        command_on: 'JgBQAFobERsQDREMLikRDRANEA0QDREMEQwRDB8cEA0fDRANEA0QDREACr5aGxAbEQ0QDS0qEQ0QDBEMEQ0QDRANEA0fGxEMIAwRDBEMEQ0QAA0FAAAAAAAAAAA='
+      remote_source_on:
+        friendly_name: "TV Source"
+        command_on: 'JgBUAFobERsQDREMLikRDRANEA0QDREMEQwRDg8MEQ0fDBEODxsRDBEODwAKsFobEBsRDg8OLCoRDBEMEQwRDRAODw0QDREMEQwfDREMERsQDREODwANBQAAAAA='
+        command_off: 'JgBUAFobERsQDREMLikRDRANEA0QDREMEQwRDg8MEQ0fDBEODxsRDBEODwAKsFobEBsRDg8OLCoRDBEMEQwRDRAODw0QDREMEQwfDREMERsQDREODwANBQAAAAA='
+      remote_ir_up:
+        friendly_name: "TV UP Select"
+        command_on: 'JgBUAFkcEBsRDBENEBsfDRANEA0RDBEMEQ0QDRANEA0fGx8NEBwQDRANEAAKsVkbERsQDREMERsfDRANEA0QDRANEQwRDBENEA0fGx8NEBsRDRANEAANBQAAAAA=|JgBUAFkcEBsRDBENEBsfDRANEA0RDBEMEQ0QDRANEA0fGx8NEBwQDRANEAAKsVkbERsQDREMERsfDRANEA0QDRANEQwRDBENEA0fGx8NEBsRDRANEAANBQAAAAA='
+      remote_ir_down:
+        friendly_name: "TV DOWN Select"
+        command_on: 'JgAoAFkbERsRDBEMERsfDRAODw4PDg8PDwwRDBEODw0fGx8NEBsRDCAADQU=|JgAoAFkbERsRDBEMERsfDRAODw4PDg8PDwwRDBEODw0fGx8NEBsRDCAADQU='
+      remote_ir_left:
+        friendly_name: "TV LEFT Select"
+        command_on: 'JgAmAFobERsQDRANLikRDBENEA0QDRANEA0RDBEMHxwfDBEbHxsRAA0FAAA='
+      remote_ir_right:
+        friendly_name: "TV RIGHT Select"
+        command_on: 'JgBQAFobERsQDRANERofDREMEQ0QDRANEA0RDBEMEQwfHB8MERsfDRAACr9ZHBAbEQwRDRAbHw0QDREMEQwRDBENEA0QDRANHxsfDREbHwwRAA0FAAAAAAAAAAA='
+      remote_ir_ok:
+        friendly_name: "TV OK "
+        command_on: 'JgAoAFkcEBsRDBEMLioQDREMEQ4PDBENEA0QDRANHxsfDhANEBsQDRAADQU=|JgAoAFkcEBsRDBEMLioQDREMEQ4PDBENEA0QDRANHxsfDhANEBsQDRAADQU='
+      remote_ir_back:
+        friendly_name: "TV Back"
+        command_on: 'JgAqAFgcEBwPDg8ODx0eDg8ODw4PDg8ODw4PDw8ODw4PDg8ODw4eHB4dDwANBQAAAAAAAAAAAAAAAAAA'
+      remote_ir_power:
+        friendly_name: "TV Power"
+        command_on: 'JgAcABweHR07HhweHR0dHhw8HR0dHhweHB4dHhwADQUAAAAAAAAAAAAAAAA='
+        command_off: 'JgAaAB0dOx4cHhweHR4cHhw8HR0dHhweOzsdAA0FAAAAAAAAAAAAAAAAAAA='
+      remote_ir_vol_down:
+        friendly_name: "TV Volume Down"
+        command_on: 'JgAaABwePBwfHBweHB4dHR0eHDw9Gx0eHDwdAA0FAAAAAAAAAAAAAAAAAAA='
+      remote_ir_vol_up:
+        friendly_name: "TV Volume Up"
+        command_on: 'JgAaABweOx0fHBweHB4dHhweHDw7HR0eHB4dAA0FAAAAAAAAAAAAAAAAAAA='
+      remote_ir_channel_up:
+        friendly_name: "TV Channel Up"
+        command_on: 'JgAaAB0dHR47HR0dHR4dHRw8Ox4cHhweHR0dAA0FAAAAAAAAAAAAAAAAAAA='
+      remote_ir_channel_down:
+        friendly_name: "TV Channel Down"
+        command_on: 'JgAaAB0eHB46Hh0eHB4cHh07Ox4cHh0dHTwcAA0FAAAAAAAAAAAAAAAAAAA='
+      remote_ir_vol_mute:
+        friendly_name: "TV Volume Mute"
+        command_on: 'JgAaAB0dOx4cHh0dHR4cHh0dHR4cPBwePDsdAA0FAAAAAAAAAAAAAAAAAAA='
+      remote_ir_stop:
+        friendly_name: "TV Stop"
+        command_on: 'JgBQAFkcEBsRDBENLSoQDREMEQwRDRANEA0QDRANEA0fDRAcEA0QDR8ACr9ZHBAcEA0QDS0qEQwRDBENEA0QDRANEA0RDBEMHw0RGxANEA0fAA0FAAAAAAAAAAA='
+#
+#
+############################################################################################################################### ir tv number panel
+#
+      remote_ir_number_1:
+        friendly_name: "TV Number 1"
+        command_on: 'JgAsAFobEBsRDRANEBsfDREMEQwRDBENEA0QDRANEQwRDBEMEQ0QDRANEA0fAA0FAAAAAAAAAAAAAAAA'
+        command_off: 'JgAsAFobEBsRDRANEBsfDREMEQwRDBENEA0QDRANEQwRDBEMEQ0QDRANEA0fAA0FAAAAAAAAAAAAAAAA'
+      remote_ir_number_2:
+        friendly_name: "TV Number 2"
+        command_on: 'JgAqAFobERsQDg8NLikRDBENEA0QDg8OEAwRDBEODw0QDRANEA0RDB8bEQANBQAAAAAAAAAAAAAAAAAA'
+        command_off: 'JgAqAFobERsQDg8NLikRDBENEA0QDg8OEAwRDBEODw0QDRANEA0RDB8bEQANBQAAAAAAAAAAAAAAAAAA'
+      remote_ir_number_3:
+        friendly_name: "TV Number 3"
+        command_on: 'JgAsAFkbERsRDBEMERsfDRANEA0QDREMEQwRDBENEA0QDRANEQwRDBEMHw0RAA0FAAAAAAAAAAAAAAAA'
+        command_off: 'JgAsAFkbERsRDBEMERsfDRANEA0QDREMEQwRDBENEA0QDRANEQwRDBEMHw0RAA0FAAAAAAAAAAAAAAAA'
+      remote_ir_number_4:
+        friendly_name: "TV Number 4"
+        command_on: 'JgAqAFobEBsRDRANLSoRDBEMEQwRDRANEA0QDw8MEQwRDBENEA4eGxEMEQANBQAAAAAAAAAAAAAAAAAA'
+        command_off: 'JgAqAFobEBsRDRANLSoRDBEMEQwRDRANEA0QDw8MEQwRDBENEA4eGxEMEQANBQAAAAAAAAAAAAAAAAAA'
+      remote_ir_number_5:
+        friendly_name: "TV Number 5"
+        command_on: 'JgAqAFcdEBwPDg4PEBwcEA4PDg8ODw4PDg8PEA0PDg8ODw4PDw4ODx0eHAANBQAAAAAAAAAAAAAAAAAA'
+        command_off: 'JgAqAFcdEBwPDg4PEBwcEA4PDg8ODw4PDg8PEA0PDg8ODw4PDw4ODx0eHAANBQAAAAAAAAAAAAAAAAAA'
+      remote_ir_number_6:
+        friendly_name: "TV Number 6"
+        command_on: 'JgAqAFkbERsRDBEMLioQDRANEQwRDg8MEQ4PDRANEA0QDREMEQwfDREbEAANBQAAAAAAAAAAAAAAAAAA'
+        command_off: 'JgAqAFkbERsRDBEMLioQDRANEQwRDg8MEQ4PDRANEA0QDREMEQwfDREbEAANBQAAAAAAAAAAAAAAAAAA'
+      remote_ir_number_7:
+        friendly_name: "TV Number 7"
+        command_on: 'JgAsAFkbERsQDREMERsfDBENEA0QDRANEQwRDBEMEQ0QDRANEA0QDR8NEA4QAA0FAAAAAAAAAAAAAAAA'
+        command_off: 'JgAsAFkbERsQDREMERsfDBENEA0QDRANEQwRDBEMEQ0QDRANEA0QDR8NEA4QAA0FAAAAAAAAAAAAAAAA'
+      remote_ir_number_8:
+        friendly_name: "TV Number 8"
+        command_on: 'JgAqAFgdDh4ODw4PKywPDw4PDg8ODw4PDg8ODw8ODw8ODw4PHR0ODw8ODwANBQAAAAAAAAAAAAAAAAAA'
+        command_off: 'JgAqAFgdDh4ODw4PKywPDw4PDg8ODw4PDg8ODw8ODw8ODw4PHR0ODw8ODwANBQAAAAAAAAAAAAAAAAAA'
+      remote_ir_number_9:
+        friendly_name: "TV Number 9"
+        command_on: 'JgAqAFkbERsRDBEMERsfDRANEA0RDBEMEQwRDRANEA0QDRAPDwwfGxENHwANBQAAAAAAAAAAAAAAAAAA'
+        command_off: 'JgAqAFkbERsRDBEMERsfDRANEA0RDBEMEQwRDRANEA0QDRAPDwwfGxENHwANBQAAAAAAAAAAAAAAAAAA'
+      remote_ir_number_0:
+        friendly_name: "TV Number 0"
+        command_on: 'JgAsAFgdDxwQDg8OLCsPDhANEA4PDg8ODw4PDg8OEA0QDRAODw4PDg8ODw4PAA0FAAAAAAAAAAAAAAAA'
+        command_off: 'JgAsAFgdDxwQDg8OLCsPDhANEA4PDg8ODw4PDg8OEA0QDRAODw4PDg8ODw4PAA0FAAAAAAAAAAAAAAAA'
+#
+#
+#
+############################################################################################################################### ir tv sources
+      remote_ir_xbox:
+        friendly_name: "xbox"
+        command_on: 'JgAYAB8bHxs9HB4cHzkfHDwcHxsfOjwcHwANBQ=='
+      remote_ir_ps4:
+        friendly_name: "PS4"
+        command_on: 'JgAaAB8bHxw8HB8bHzoeHB8bHxweHD0bHxsfAA0FAAAAAAAAAAAAAAAAAAA='
+      remote_ir_kodi:
+        friendly_name: "Kodi"
+        command_on: 'JgAaAB8bPRsfHB4cHxsfHB46HxsfHDwcHzkfAA0FAAAAAAAAAAAAAAAAAAA='
+      remote_ir_netflix:
+        friendly_name: "netflix"
+        command_on: 'JgAqAFobERsQDREODxogDBENEA0QDg8NEA8PDBEMEQ4eDBEMERsfDRAbEQANBQAAAAAAAAAAAAAAAAAA'
+        #

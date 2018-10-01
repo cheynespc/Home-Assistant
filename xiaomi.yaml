@@ -1,0 +1,5 @@
+
+  discovery_retry: 20
+  gateways:
+    - mac: !secret xiaomi_mac
+      key: !secret xiaomi_password

@@ -1,0 +1,965 @@
+- id: '1532585101531'
+  alias: delay start homekit
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - delay: 00:15
+  - service: homekit.start
+- id: '1536992210360'
+  alias: light on evening
+  trigger:
+  - event: sunset
+    offset: -01:00:00
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: device_tracker.ipadpro
+    state: home
+  action:
+  - data:
+      entity_id: light.yeelight_rgb_7811dc6840f6
+    service: light.turn_on
+  - data:
+      entity_id: light.ledrgb_nodemcu02
+    service: light.turn_on
+  - data:
+      entity_id: light.kitchen_lamp
+    service: light.turn_on
+- alias: Turn off all lights 40 minutes after no movement after 530pm if home
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001a250d8
+    to: 'off'
+    for:
+      minutes: 40
+  condition:
+  - after: '17:30'
+    before: '22:29'
+    condition: time
+  action:
+  - service: light.turn_off
+  id: b58d85da5cc24342879502dadbf247a4
+- id: '1536068102555'
+  alias: light on 40 mins before sunset if home
+  trigger:
+  - event: sunset
+    offset: -00:40:00
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: binary_sensor.motion_sensor_158d0001a250d8
+    state: detected
+  action:
+  - data:
+      entity_id: light.kitchen_lamp
+    service: light.turn_on
+- id: '1536236540288'
+  alias: green button bench light
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001ab1baa
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.ledrgb_nodemcu02
+    service: light.toggle
+- id: '1536239021007'
+  alias: green button long click kitchen and bench toggle
+  trigger:
+  - event_data:
+      click_type: long
+      entity_id: binary_sensor.door_window_sensor_158d0001ab1baa
+    event_type: click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: light.kitchen_lamp
+    service: switch.toggle
+  - data:
+      entity_id: light.ledrgb_nodemcu02
+    service: switch.toggle
+- alias: Turn off all lights 20 minutes after last movement after 1030pm
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001a250d8
+    to: 'off'
+    for:
+      minutes: 20
+  condition:
+  - after: '22:30'
+    before: 06:00
+    condition: time
+  action:
+  - service: light.turn_off
+  id: b5171234280c4fc58590a8515e3bfacf
+- id: '1531409287576'
+  alias: right button kitchen light toggle
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.wall_switch_right_158d0001640b0d
+      click_type: single
+  action:
+    service: light.toggle
+    data:
+      entity_id:
+      - light.kitchen_lamp
+- id: '1531453439856'
+  alias: all lights off mini switch wfi
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d0001714366
+    event_type: click
+    platform: event
+  condition: []
+  action:
+  - service: light.turn_off
+- id: '1531454374159'
+  alias: Left Button bedlamp light toggle
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.wall_switch_left_158d0001640b0d
+      click_type: single
+  action:
+    service: light.toggle
+    data:
+      entity_id:
+      - light.yeelight_rgb_7811dc6840f6
+- id: '1531454832051'
+  alias: Both buttons bathroom lamp
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.wall_switch_both_158d0001640b0d
+      click_type: single
+  action:
+    service: switch.toggle
+    data:
+      entity_id:
+      - switch.plug_158d0001fa63ab
+- id: '1531738421364'
+  alias: garage test relay
+  trigger:
+  - payload: 'ON'
+    platform: mqtt
+    topic: cmnd/cheyneslamp/POWER
+  condition: []
+  action:
+  - delay: 00:00:09
+  - data:
+      payload: 'OFF'
+      topic: cmnd/cheyneslamp/POWER
+    service: mqtt.publish
+- id: a9a20afe29f345a18fc0a321a13c580d
+  alias: Turn on bathroom light when there is movement
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d0001a24ff6
+    platform: state
+    to: 'on'
+  condition:
+  - after: '17:00'
+    before: '23:00'
+    condition: time
+  action:
+  - entity_id: light.bathroom_lamp
+    service: homeassistant.turn_on
+- alias: Turn off kitchen light 10 minutes after last movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001a24ff6
+    to: 'off'
+    for:
+      minutes: 10
+  action:
+    service: homeassistant.turn_off
+    entity_id: light.bathroom_lamp
+  id: 1f4749fa6c2d42889d35a0c07c07a412
+- id: '1532493638411'
+  alias: wireless button long press
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001714366
+    event_type: click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - light.yeelight_rgb_7811dc6840f6
+    service: light.toggle
+- id: '1532561522881'
+  alias: Play song test
+  trigger:
+  - entity_id: automation.both_buttons_bathroom_lamp
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - media_player.kodi_libreeleclocal
+      media_content_id: smb://10.0.4.86/share/sexy2.mp4
+      media_content_type: video
+    service: media_player.play_media
+- id: '1532581420994'
+  alias: play youtube
+  trigger:
+  - entity_id: binary_sensor.wall_switch_both_158d0001640b0d
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id:
+      - media_player.kodi_libreeleclocal
+      media_content_id: smb://10.0.4.86/share/sexy.mp3
+      media_content_type: music
+    service: media_player.play_media
+- id: '1535594625425'
+  alias: Live TV IR
+  trigger:
+  - entity_id: input_boolean.switch_tv
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.switch_chromecast
+    service: input_boolean.turn_off
+  - data:
+      entity_id: input_boolean.switch_tv_stop
+    service: input_boolean.turn_on
+  - data:
+      entity_id: media_player.playstation_4
+    service: media_player.turn_off
+  - data:
+      entity_id: switch.remote_freeview_on
+    service: switch.turn_on
+  - delay: 00:00:01
+  - data:
+      entity_id: input_boolean.switch_tv
+    service: input_boolean.turn_off
+  - data:
+      entity_id: switch.remote_ir_netflix
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_xbox
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_ps4
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_kodi
+    service: switch.turn_off
+- id: '1535593816793'
+  alias: PS4 TV IR
+  trigger:
+  - entity_id: input_boolean.switch_ps4
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.switch_chromecast
+    service: input_boolean.turn_off
+  - data:
+      entity_id: input_boolean.switch_tv_stop
+    service: input_boolean.turn_on
+  - delay: 00:00:03
+  - data:
+      entity_id: input_boolean.switch_ps4_power
+    service: input_boolean.turn_on
+  - data:
+      entity_id: switch.remote_ir_ps4
+    service: switch.turn_on
+  - delay: 00:00:01
+  - data:
+      entity_id: input_boolean.switch_ps4
+    service: input_boolean.turn_off
+  - data:
+      entity_id: switch.remote_ir_xbox
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_freeview_on
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_kodi
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_netflix
+    service: switch.turn_off
+- id: '1535593891737'
+  alias: Xbox One
+  trigger:
+  - entity_id: input_boolean.switch_xbox
+    from: 'off'
+    platform: state
+    to: 'on'
+  - entity_id: media_player.xbox_one
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.switch_chromecast
+    service: input_boolean.turn_off
+  - data:
+      entity_id: media_player.playstation_4
+    service: media_player.turn_off
+  - data:
+      entity_id: input_boolean.switch_tv_stop
+    service: input_boolean.turn_on
+  - delay: 00:00:03
+  - data:
+      entity_id: switch.remote_ir_xbox
+    service: switch.turn_on
+  - delay: 00:00:01
+  - data:
+      entity_id: input_boolean.switch_xbox
+    service: input_boolean.turn_off
+  - data:
+      entity_id: switch.remote_ir_ps4
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_freeview_on
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_kodi
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_netflix
+    service: switch.turn_off
+  - data:
+      entity_id: media_player.xbox_one
+    service: media_player.turn_on
+- id: '1535595897567'
+  alias: Kodi IR
+  trigger:
+  - entity_id: input_boolean.switch_kodi
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.switch_chromecast
+    service: input_boolean.turn_off
+  - data:
+      entity_id: media_player.43put680179
+    service: media_player.media_stop
+  - data:
+      entity_id: media_player.playstation_4
+    service: media_player.turn_off
+  - data:
+      entity_id: switch.remote_ir_kodi
+    service: switch.turn_on
+  - delay: 00:00:01
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_off
+  - data:
+      entity_id: switch.remote_ir_xbox
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_ps4
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_freeview_on
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_netflix
+    service: switch.turn_off
+  - data:
+      entity_id: input_boolean.switch_ps4_power
+    service: input_boolean.turn_off
+- id: netflixirphilipstv
+  alias: Netflix
+  trigger:
+  - entity_id: input_boolean.switch_netflix
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.switch_chromecast
+    service: input_boolean.turn_off
+  - data:
+      entity_id: media_player.playstation_4
+    service: media_player.turn_off
+  - data:
+      entity_id: switch.remote_ir_power
+    service: switch.turn_on
+  - delay: 00:00:03
+  - data:
+      entity_id: switch.remote_ir_netflix
+    service: switch.turn_on
+  - delay: 00:00:03
+  - data:
+      entity_id: switch.remote_ir_ok
+    service: switch.turn_on
+  - delay: 00:00:01
+  - data:
+      entity_id: switch.remote_ir_ok
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_xbox
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_ps4
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_freeview_on
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_kodi
+    service: switch.turn_off
+  - data:
+      entity_id: input_boolean.switch_netflix
+    service: input_boolean.turn_off
+  - data:
+      entity_id: input_boolean.switch_tv_stop
+    service: input_boolean.turn_on
+- id: '1535603613223'
+  alias: netflix exit
+  trigger:
+  - entity_id: input_boolean.switch_kodi
+    from: 'off'
+    platform: state
+    to: 'on'
+  - entity_id: input_boolean.switch_ps4
+    from: 'off'
+    platform: state
+    to: 'on'
+  - entity_id: input_boolean.switch_xbox
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.remote_ir_netflix
+    state: 'on'
+  action:
+  - data:
+      entity_id: input_boolean.switch_tv
+    service: input_boolean.turn_on
+  - data:
+      entity_id: switch.remote_ir_netflix
+    service: switch.turn_off
+- id: '1537784008032'
+  alias: chromecast on
+  trigger:
+  - entity_id: media_player.43put680179
+    from: 'off'
+    platform: state
+    to: playing
+  - entity_id: media_player.43put680179
+    from: 'on'
+    platform: state
+    to: playing
+  - entity_id: media_player.43put680179
+    from: idle
+    platform: state
+    to: playing
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.switch_chromecast
+    service: input_boolean.turn_on
+  - data:
+      entity_id: media_player.playstation_4
+    service: media_player.turn_off
+  - data:
+      entity_id: switch.remote_ir_kodi
+    service: switch.turn_off
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_off
+  - data:
+      entity_id: switch.remote_ir_xbox
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_ps4
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_freeview_on
+    service: switch.turn_off
+  - data:
+      entity_id: switch.remote_ir_netflix
+    service: switch.turn_off
+  - data:
+      entity_id: input_boolean.switch_ps4_power
+    service: input_boolean.turn_off
+- id: '1535617000752'
+  alias: kaden led input boolean
+  trigger:
+  - entity_id: input_boolean.switch_kaden_led
+    from: 'off'
+    platform: state
+    to: 'on'
+  - entity_id: input_boolean.switch_kaden_led
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.kaden_led
+    service: switch.toggle
+- id: '1535617113970'
+  alias: kaden ir power input boolean
+  trigger:
+  - entity_id: input_boolean.switch_kaden_power
+    from: 'off'
+    platform: state
+    to: 'on'
+  - entity_id: input_boolean.switch_kaden_power
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.kaden_power
+    service: switch.toggle
+- id: '1535617621358'
+  alias: kaden ir Turbo input boolean
+  trigger:
+  - entity_id: input_boolean.switch_kaden_turbo
+    from: 'off'
+    platform: state
+    to: 'on'
+  - entity_id: input_boolean.switch_kaden_turbo
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.kaden_turbo
+    service: switch.toggle
+- alias: Turn on the TV when Kodi is activated
+  trigger:
+    platform: state
+    entity_id: media_player.kodi_tv
+    from: 'off'
+    to: playing
+  action:
+  - service: media_player.turn_on
+    entity_id: media_player.kodi_tv
+  id: 539ea19e0f0d407a8b6ee4b05f2533ec
+- id: '1536367278747'
+  alias: tv back
+  trigger:
+  - entity_id: input_boolean.switch_tv_back
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_back
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_back
+    service: input_boolean.turn_off
+- alias: tv channel up
+  trigger:
+  - entity_id: input_boolean.switch_tv_channel_up
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_channel_up
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_channel_up
+    service: input_boolean.turn_off
+  id: 09f498bd24d74b2bb36f66fe72e65bf7
+- alias: tv channel down
+  trigger:
+  - entity_id: input_boolean.switch_tv_channel_down
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_channel_down
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_channel_down
+    service: input_boolean.turn_off
+  id: 065e958405104cab83ad6f0a9df543e8
+- alias: tv vol up
+  trigger:
+  - entity_id: input_boolean.switch_tv_vol_up
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_vol_up
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_vol_up
+    service: input_boolean.turn_off
+  id: cd2287f62dc14e9b865d15c585c899e9
+- alias: tv vol down
+  trigger:
+  - entity_id: input_boolean.switch_tv_vol_down
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_vol_down
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_vol_down
+    service: input_boolean.turn_off
+  id: 4fa76a73f3104337b3dd0b07a451455b
+- id: '1536628025005'
+  alias: IR Stop
+  trigger:
+  - entity_id: input_boolean.switch_tv_stop
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_stop
+    service: switch.turn_on
+  - data:
+      entity_id: switch.remote_ir_stop
+    service: switch.turn_off
+  - data:
+      entity_id: input_boolean.switch_tv_stop
+    service: input_boolean.turn_off
+- id: '1537160965544'
+  alias: PS4 Power on
+  trigger:
+  - entity_id: input_boolean.switch_ps4_power
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: media_player.playstation_4
+    state: 'off'
+  action:
+  - data:
+      entity_id: media_player.playstation_4
+    service: media_player.turn_on
+  - data:
+      entity_id: input_boolean.switch_ps4
+    service: input_boolean.turn_on
+- id: '1537161105405'
+  alias: PS4 Power Off
+  trigger:
+  - entity_id: input_boolean.switch_ps4_power
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.playstation_4
+    service: media_player.turn_off
+- alias: Number 1
+  trigger:
+  - entity_id: input_boolean.switch_tv_ir_num_1
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_number_1
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_ir_num_1
+    service: input_boolean.turn_off
+  id: 3275f582c1f448e28b667e1a134e7952
+- alias: Number 2
+  trigger:
+  - entity_id: input_boolean.switch_tv_ir_num_2
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_number_2
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_ir_num_2
+    service: input_boolean.turn_off
+  id: 6b53b995c7c942da98b5ca612bbd13b0
+- alias: Number 3
+  trigger:
+  - entity_id: input_boolean.switch_tv_ir_num_3
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_number_3
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_ir_num_3
+    service: input_boolean.turn_off
+  id: c7f31d4c990a47c5a062e32e0a71cba1
+- alias: Number 4
+  trigger:
+  - entity_id: input_boolean.switch_tv_ir_num_4
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_number_4
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_ir_num_4
+    service: input_boolean.turn_off
+  id: d715a1718a0a4e01b2c948ddc1b3ee7d
+- alias: Number 5
+  trigger:
+  - entity_id: input_boolean.switch_tv_ir_num_5
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_number_5
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_ir_num_5
+    service: input_boolean.turn_off
+  id: 9cf23d457d5a416f89a1c26c3a4d8e3e
+- alias: Number 6
+  trigger:
+  - entity_id: input_boolean.switch_tv_ir_num_6
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_number_6
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_ir_num_6
+    service: input_boolean.turn_off
+  id: 14b304f1d440485185c3b8ab8cc91395
+- alias: Number 7
+  trigger:
+  - entity_id: input_boolean.switch_tv_ir_num_7
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_number_7
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_ir_num_7
+    service: input_boolean.turn_off
+  id: 6a341ef1f8334ba489a3cfeff9f37273
+- alias: Number 8
+  trigger:
+  - entity_id: input_boolean.switch_tv_ir_num_8
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_number_8
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_ir_num_8
+    service: input_boolean.turn_off
+  id: 692b8faa187c496d81ef76fcb2e60b82
+- alias: Number 9
+  trigger:
+  - entity_id: input_boolean.switch_tv_ir_num_9
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_number_9
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_ir_num_9
+    service: input_boolean.turn_off
+  id: 6f5f520d30aa4a72a7457bfd68cf6a4e
+- alias: Number 0
+  trigger:
+  - entity_id: input_boolean.switch_tv_ir_num_0
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.remote_ir_number_0
+    service: switch.turn_on
+  - data:
+      entity_id: input_boolean.switch_tv_ir_num_0
+    service: input_boolean.turn_off
+  id: b2404194fe824518bd753c23d08b8ba4
+- alias: Announce Input Over Google Homes
+  trigger:
+  - platform: state
+    entity_id: input_text.youtube_link
+  action:
+  - service: tts.google_say
+    data_template:
+      entity_id: media_player.kodi__philips_tv
+      message: '{{ states.input_text.youtube_link.state }}'
+  id: 33989b086d7f4efda26b0d05757a5db6
+- id: '1537784047926'
+  alias: chromecast off
+  trigger:
+  - entity_id: media_player.43put680179
+    from: playing
+    platform: state
+    to: 'off'
+  - entity_id: media_player.43put680179
+    from: playing
+    platform: state
+    to: idle
+  - entity_id: media_player.43put680179
+    from: playing
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.switch_chromecast
+    service: input_boolean.turn_off
+- id: '1537931776999'
+  alias: xbox off
+  trigger:
+  - entity_id: switch.remote_ir_xbox
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.xbox_one
+    service: media_player.turn_off
+- id: '1538056955123'
+  alias: is tv on if not turn on
+  trigger:
+  - entity_id: media_player.kodi__philips_tv
+    platform: state
+    to: 'on'
+  - entity_id: input_boolean.switch_tv
+    from: 'off'
+    platform: state
+    to: 'on'
+  - entity_id: input_boolean.switch_netflix
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: media_player.philips_ir_control
+    state: 'off'
+  action:
+  - data:
+      entity_id: media_player.philips_ir_control
+    service: media_player.turn_on
+- id: testtestt
+  alias: select abc and change source
+  trigger:
+  - entity_id: automation.both_buttons_bathroom_lamp
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id: media_player.live_tv
+      source: ABC
+    service: media_player.select_source
+- id: wintv
+  alias: select win and change source
+  trigger:
+  - entity_id: automation.both_buttons_bathroom_lamp
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id: media_player.live_tv
+      source: WIN HD Port Macquarie
+    service: media_player.select_source
+- id: SBS ONE
+  alias: select SBS ONE and change source
+  trigger:
+  - entity_id: automation.both_buttons_bathroom_lamp
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id: media_player.live_tv
+      source: SBS ONE
+    service: media_player.select_source
+- id: PRIME7 Taree
+  alias: select PRIME7 Taree and change source
+  trigger:
+  - entity_id: automation.both_buttons_bathroom_lamp
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id: media_player.live_tv
+      source: PRIME7 Taree
+    service: media_player.select_source
+- id: Nine Taree-Port Macquarie
+  alias: select Nine Taree-Port Macquarie and change source
+  trigger:
+  - entity_id: automation.both_buttons_bathroom_lamp
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id: media_player.live_tv
+      source: Nine Taree-Port Macquarie
+    service: media_player.select_source
+    
+# ABCComedy/Kids,ABC ME,ABC NEWS,SBS ONE HD,SBS VICELAND HD,SBS VICELAND,Food Network,NITV,SBS Arabic24,SBS Radio 1,SBS Radio 2,SBS Chill,WIN HD Port Macquarie,ONE Port Macquarie,ELEVEN Port Macquarie,Sky News on WIN,TVSN,GOLD,PRIME7 HD Taree,PRIME7 Taree,7TWO Taree,7mate Taree,ishoptv,7flix,RACING.COM,9HD Taree-Port Macquarie,Nine Taree-Port Macquarie,9GEM Taree-Port Macquarie,9GO! Taree-Port Macquarie,9Life Taree-Port Macquarie,Your Money,9GO! Taree-Port Macquarie,Double J,ABC Jazz,SBS Radio 1,SBS Radio 2,SBS Radio 3,SBS Arabic24,SBS PopDesi,SBS Chill,SBS PopAsia

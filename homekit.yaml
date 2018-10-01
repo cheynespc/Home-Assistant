@@ -1,0 +1,39 @@
+
+#  pincode: 230-91-977
+  auto_start: False
+  filter:
+    include_domains:
+      - light
+      - binary_sensor
+      - climate
+    include_entities:
+      - sensor.kitchen_humidity
+      - sensor.kitchen_temperature
+      - sensor.bathroom_temperature_filtered
+      - sensor.bathroom_humidity_filtered
+      - switch.extension_cable
+      - switch.kaden_led
+      - switch.kaden_power
+      - switch.kaden_turbo
+      - switch.kitchen_fan
+      - switch.plug_158d0001deb318
+      - switch.plug_158d0001fa63ab
+      - switch.plug_158d00024a54e6
+      - switch.power_monitor
+      - script.1532998040612
+      - script.1532659272895
+      - input_boolean.switch_tv
+      - input_boolean.switch_ps4
+      - input_boolean.switch_netflix
+      - input_boolean.switch_kodi
+      - input_boolean.switch_chromecast
+      - input_boolean.switch_xbox
+      - input_boolean.switch_tv_ir_power
+      - media_player.test_universal
+  entity_config:
+    media_player.test_universal:
+      feature_list:
+        - feature: on_off
+        - feature: play_pause
+        - feature: play_stop
+        - feature: toggle_mute

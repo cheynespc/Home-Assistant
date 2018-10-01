@@ -1,0 +1,236 @@
+
+#
+# PIHOLE
+  - platform: pi_hole
+    host: !secret my_web_address_pihole
+    ssl: true
+    monitored_conditions:
+      - ads_blocked_today
+      - dns_queries_today
+      - unique_clients
+############################################# WEATHER SENSORS ##############################################################
+#
+## weather yr
+  - platform: yr
+    name: Weather
+    forecast: 24
+    monitored_conditions:
+      - temperature
+      - symbol
+      - precipitation
+      - windSpeed
+      - pressure
+      - windDirection
+      - humidity
+      - dewpointTemperature
+#
+  - platform: bom
+    station: !secret bom_station_id
+    name: !secret bom_station_name
+    monitored_conditions:
+      - apparent_t
+      - cloud
+      - cloud_base_m
+      - gust_kmh
+      - gust_kt
+      - air_temp
+      - dewpt
+      - press
+      - rain_trace
+      - rel_hum
+      - sea_state
+      - swell_dir_worded
+      - swell_height
+      - swell_period
+      - vis_km
+      - weather
+      - wind_dir
+      - wind_spd_kmh
+      - wind_spd_kt
+######################################################## FUEL CHECK SENSOR #################################################
+  - platform: nsw_fuel_station
+    station_id: 654
+    fuel_types:
+      - E10
+      - U91
+      - P95
+      - P98
+      - DL
+#
+  - platform: nsw_fuel_station
+    station_id: 1030
+    fuel_types:
+      - E10
+      - U91
+      - P95
+      - P98
+      - DL
+#
+  - platform: nsw_fuel_station
+    station_id: 511
+    fuel_types:
+      - E10
+      - U91
+      - P95
+      - P98
+      - DL
+#
+  - platform: nsw_fuel_station
+    station_id: 1314
+    fuel_types:
+      - E10
+      - U91
+      - P95
+      - P98
+      - DL
+#
+  - platform: nsw_fuel_station
+    station_id: 1305
+    fuel_types:
+      - E10
+      - U91
+      - P95
+      - P98
+      - DL
+#
+  - platform: nsw_fuel_station
+    station_id: 2328
+    fuel_types:
+      - E10
+      - U91
+      - P95
+      - P98
+      - DL
+#
+  - platform: nsw_fuel_station
+    station_id: 2679
+    fuel_types:
+      - E10
+      - U91
+      - P95
+      - P98
+      - DL
+#
+#
+#
+######################################################## SURF SENSOR ################################################
+#
+  - platform: magicseaweed
+    api_key: !secret my_magic_seaweed_api
+    spot_id: !secret my_magic_seaweed_spotid
+    monitored_conditions:
+      - swell_forecast
+      - max_breaking_swell
+      - min_breaking_swell
+#
+########################################################   TIDES   ##################################################
+  - platform: worldtidesinfo
+    api_key: !secret my_worldtides_api
+######################################################## SPEEDTEST ##################################################
+  - platform: speedtest
+    hour:
+      - 0
+      - 6
+      - 12
+      - 18
+    monitored_conditions:
+    - ping
+    - download
+    - upload
+###DATE AND TIME################
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+#
+# Kitchen sonoff dht11 sensor
+  - platform: mqtt
+    name: "Kitchen Temperature"
+    state_topic: "tele/cheyneslamp/SENSOR"
+    value_template: "{{ value_json['DHT11-14'].Temperature }}"
+    unit_of_measurement: "°C"
+#Kitchen sonoff dht11 sensor
+  - platform: mqtt
+    name: "Kitchen Humidity"
+    state_topic: "tele/cheyneslamp/SENSOR"
+    value_template: "{{ value_json['DHT11-14'].Humidity }}"
+    unit_of_measurement: "%"
+#
+  - platform: filter
+    name: "Realistic Kitchen Temperature"
+    entity_id: sensor.kitchen_temperature
+    filters:
+      - filter: outlier
+        window_size: 4
+        radius: 2.0
+      - filter: lowpass
+        time_constant: 10
+      - filter: time_simple_moving_average
+        window_size: 00:05
+        precision: 2
+  - platform: filter
+    name: "Bathroom Humidity filtered"
+    entity_id: sensor.bathroom_dht_11_humidity
+    filters:
+      - filter: outlier
+        window_size: 4
+        radius: 4.0
+      - filter: lowpass
+        time_constant: 10
+        precision: 2
+  - platform: filter
+    name: "Bathroom Temperature filtered"
+    entity_id: sensor.bathroom_dht_11_temperature
+    filters:
+      - filter: outlier
+        window_size: 4
+        radius: 2.0
+      - filter: lowpass
+        time_constant: 10
+      - filter: time_simple_moving_average
+        window_size: 00:05
+        precision: 2
+#Bathroom_sensor
+#
+# Bathroom sonoff dht11 sensor
+  - platform: mqtt
+    name: "Bathroom DHT 11 Temperature"
+    state_topic: "tele/bathroomlamp/SENSOR"
+    value_template: "{{ value_json['DHT11-14'].Temperature }}"
+    unit_of_measurement: "°C"
+#Bathroom sonoff dht11 sensor
+  - platform: mqtt
+    name: "Bathroom DHT 11 Humidity"
+    state_topic: "tele/bathroomlamp/SENSOR"
+    value_template: "{{ value_json['DHT11-14'].Humidity }}"
+    unit_of_measurement: "%"
+#Power Monitor SENSORS
+  - platform: mqtt
+    name: "Power Monitor Energy"
+    state_topic: "tele/powermon/ENERGY"
+    value_template: "{{ value_json.Today }}"
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Yesterday AC Energy Total"
+    state_topic: "tele/powermon/ENERGY"
+    value_template: "{{ value_json.Yesterday }}"
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Power Monitor Power"
+    state_topic: "tele/powermon/ENERGY"
+    value_template: "{{ value_json.Power }}"
+    unit_of_measurement: "Watts"
+  - platform: mqtt
+    name: "Power Monitor Voltage"
+    state_topic: "tele/powermon/ENERGY"
+    value_template: "{{ value_json.Voltage }}"
+    unit_of_measurement: "Volts"
+  - platform: mqtt
+    name: "Air Conditioner Power"
+    state_topic: "tele/powermon/ENERGY"
+    value_template: "{{ value_json.Power }}"
+    unit_of_measurement: "Watts"
+#
+########################## ATTRIBUTES & CALCULATIONS AS ENTITIES ########## TEMPLATE ########################
+  - platform: template
+    sensors: !include attributes_as_entities.yaml

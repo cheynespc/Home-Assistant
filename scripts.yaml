@@ -1,0 +1,642 @@
+'1532564943356':
+  alias: play song
+  sequence:
+  - service: automation.trigger
+    entity_id: automation.play_song_test
+tvoff:
+  alias: TV Off
+  sequence:
+  - service: automation.trigger
+    entity_id: automation.tv_off
+tvon:
+  alias: TV On
+  sequence:
+  - service: automation.trigger
+    entity_id: automation.tv_on
+'1532657541787':
+  alias: dance trippin
+  sequence:
+  - data:
+      media_content_id: '{{states.input_text.text1}}'
+      media_content_type: video/youtube
+    entity_id: media_player.kodi__philips_tv
+    service: media_extractor.play_media
+'1532658800791':
+  alias: sexy music
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: smb://10.0.4.86/share/ohyeah.mp4
+      media_content_type: video
+'1532659074431':
+  alias: chillout
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: smb://10.0.4.86/share/relax.mp4
+      media_content_type: video
+'1532659272895':
+  alias: fireplace
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.youtube/play/?video_id=L_LUpnjgPso
+      media_content_type: video
+'1532659387113':
+  alias: too sexy
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: smb://10.0.4.86/share/sexy.mp3
+      media_content_type: audio
+'1532671463982':
+  alias: Carl cox
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: smb://10.0.4.86/share/carlcox.mp4
+      media_content_type: video
+'1532998040612':
+  alias: boil the jug
+  sequence:
+  - data: {}
+    service: switch.turn_on
+    entity_id: switch.extension_cable
+'1533005431628':
+  alias: Nastia Kazantip
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: smb://10.0.4.86/share/nastiakazantip.mp4
+      media_content_type: video
+'1533005467987':
+  alias: DeadMau5
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: smb://10.0.4.86/share/deadmau5space.mp4
+      media_content_type: video
+'1533361874576':
+  alias: super troopers 2
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: smb://10.0.4.86/share/super.mp4
+      media_content_type: video
+camera:
+  alias: camera
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: rtsp://10.0.4.60:554/unicast
+      media_content_type: video
+surfcam:
+  alias: surf camera
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: https://www.bonnyhillsbeachhouse.com.au/surfcam_stream/surfcam.jpg
+      media_content_type: picture
+cartoons:
+  alias: cartoons
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/651
+      media_content_type: video
+tvhgtv:
+  alias: HGTV
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_231148701.pvr
+      media_content_type: video
+radioiheartdance:
+  alias: iHeart Radio Dance
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/radio/All channels/pvr.iptvsimple_1299185395.pvr
+      media_content_type: audio
+radiotriplej:
+  alias: Triple J
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/radio/All channels/pvr.iptvsimple_1788973478.pvr
+      media_content_type: audio
+gaiahome:
+  alias: movies list new release
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.gaia/?action=movies&kids=0&type=movie&url=home
+      media_content_type: video
+tvsyfy:
+  alias: SYFY
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/221
+      media_content_type: video
+tv9go:
+  alias: 9 Go
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_1909462257.pvr
+      media_content_type: video
+tv9gem:
+  alias: 9 Gem
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_147617138.pvr
+      media_content_type: video
+    entity_id: media_player.kodi__philips_tv
+    service: media_player.play_media
+tv9life:
+  alias: 9 Life
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_91377046.pvr
+      media_content_type: video
+tv9nine:
+  alias: Nine
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_909901772.pvr
+      media_content_type: video
+tvabcme:
+  alias: ABC Me
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_1026795266.pvr
+      media_content_type: video
+tvabckids:
+  alias: ABC Kids
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_845990375.pvr
+      media_content_type: video
+tvabccomedy:
+  alias: ABC Comedy
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_456440966.pvr
+      media_content_type: video
+tvabcnews:
+  alias: ABC News
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_68378025.pvr
+      media_content_type: video
+tvabc:
+  alias: ABC
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_205449645.pvr
+      media_content_type: video
+tv7:
+  alias: Seven
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_1670374243.pvr
+      media_content_type: video
+tv7two:
+  alias: Seven Two
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_1598048305.pvr
+      media_content_type: video
+tv7mate:
+  alias: Seven Mate
+  sequence:
+  - data:
+      entity_id: media_player.live_tv
+      source: 88 - 9GO! Taree-Port Macquarie
+    entity_id: media_player.kodi__philips_tv
+    service: media_player.select_source
+tv7flix:
+  alias: Seven flix
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_1541799317.pvr
+      media_content_type: video
+tvracing:
+  alias: Racing
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_1811984037.pvr
+      media_content_type: video
+tvone:
+  alias: One HD
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_1010001538.pvr
+      media_content_type: video
+tvten:
+  alias: Ten
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_1723966549.pvr
+      media_content_type: video
+tveleven:
+  alias: Eleven
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_996693626.pvr
+      media_content_type: video
+tvsbs:
+  alias: SBS
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_580391585.pvr
+      media_content_type: video
+tvsbsvice:
+  alias: SBS Viceland
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_904001498.pvr
+      media_content_type: video
+tvfood:
+  alias: Food Network
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_206596524.pvr
+      media_content_type: video
+tvnitv:
+  alias: NITV
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_874022844.pvr
+      media_content_type: video
+tvfoxnews:
+  alias: Fox News
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: pvr://channels/tv/All channels/pvr.iptvsimple_1231137647.pvr
+      media_content_type: video
+tvredbull:
+  alias: Redbull TV
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.au.freeview/?_route=home&play=tv.redbull.tv&_l=.pvr
+      media_content_type: video
+tvtlc:
+  alias: TLC
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/288
+      media_content_type: video
+tvngwild:
+  alias: NatGeo Wild
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/157
+      media_content_type: video
+tvh2:
+  alias: H2
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/126
+      media_content_type: video
+tvhistory:
+  alias: History Channel
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/131
+      media_content_type: video
+tvdiscshed:
+  alias: Discovery Turbo Shed
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/268
+      media_content_type: video
+tvdiscturbo:
+  alias: Discovery Turbo
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/267
+      media_content_type: video
+tvdiscscience:
+  alias: Discovery Science
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/93
+      media_content_type: video
+tvdisc:
+  alias: Discovery
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/91
+      media_content_type: video
+tvnatgeo:
+  alias: National Geographic
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/155
+      media_content_type: video
+tvshowtime:
+  alias: Showtime
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/472
+      media_content_type: video
+tvmtv:
+  alias: MTV
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/150
+      media_content_type: video
+tvmtvclassic:
+  alias: MTV Classic
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/151
+      media_content_type: video
+tvmtvhits:
+  alias: MTV Hits
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/152
+      media_content_type: video
+tvmtvdance:
+  alias: MTV Dance
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/295
+      media_content_type: video
+tvmtvmusic:
+  alias: MTV Music
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/348
+      media_content_type: video
+tvmtvrocks:
+  alias: MTV Rocks
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/296
+      media_content_type: video
+tvfs1:
+  alias: Fox Sports 1
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/120
+      media_content_type: video
+tvfs2:
+  alias: Fox Sports 2
+  sequence:
+  - data:
+      entity_id: input_boolean.switch_kodi
+    service: input_boolean.turn_on
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: plugin://plugin.video.tvtap/play/121
+      media_content_type: video
+'1536933034694':
+  alias: bed time
+  sequence:
+  - data:
+      brightness: '20'
+      entity_id: light.yeelight_rgb_7811dc6840f6
+      rgb_color: '[255,177,110]'
+    service: light.turn_on
+  - data:
+      brightness: '51'
+      entity_id: light.ledrgb2_nodemcu03
+      rgb_color: '[255,63,0]'
+    service: light.turn_on
+  - data:
+      entity_id: light.ledrgb_nodemcu02
+    service: light.turn_off
+  - data:
+      entity_id: light.kitchen_lamp
+    service: light.turn_off
+'1537183229122':
+  alias: Mafia 3 Playstation 4
+  sequence:
+  - data:
+      entity_id: media_player.playstation_4
+      source: Mafia III
+    service: media_player.select_source
+ytlink:
+  alias: youtube link
+  sequence:
+  - service: media_player.play_media
+    entity_id: media_player.kodi__philips_tv
+    data:
+      media_content_id: '{{ states.input_text.youtube_link.state }}'
+      media_content_type: video

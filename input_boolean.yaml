@@ -1,0 +1,116 @@
+
+############################################################################################################################### TV Source Buttons
+  switch_tv:
+    name: Live TV
+    icon: mdi:television-classic
+  switch_ps4_power:
+    name: Playstation Power 
+    icon: mdi:playstation
+  switch_ps4:
+    name: Playstation 4
+    icon: mdi:playstation
+  switch_xbox:
+    name: Xbox One
+    icon: mdi:xbox
+  switch_kodi:
+    name: Kodi
+    icon: mdi:kodi
+  switch_netflix:
+    name: Netflix
+    icon: mdi:netflix
+  switch_tv_ir_power:
+    name: TV Power
+    icon: mdi:power
+  switch_chromecast:
+    name: Chromecast
+    icon: mdi:chrome
+  kodi_tv_state:
+  switch_ps4_mafia3:
+    name: Mafia 3
+    icon: mdi:playstation
+#
+############################################################################################################################### ir tv Buttons
+#
+  switch_tv_vol_up:
+    name: Vol +
+    icon: mdi:volume-plus
+  switch_tv_vol_down:
+    name: Vol -
+    icon: mdi:volume-minus
+  switch_tv_channel_up:
+    name: CH UP
+    icon: mdi:chevron-up-box
+  switch_tv_channel_down:
+    name: CH DOWN
+    icon: mdi:chevron-down-box
+  switch_tv_back:
+    name: Back
+    icon: mdi:keyboard-return
+  switch_tv_ok:
+    name: OK
+    icon: mdi:pokeball
+  switch_tv_stop:
+    name: Stop
+    icon: mdi:stop
+#
+############################################################################################################################### ir tv Number Buttons
+#
+  switch_tv_ir_num_1:
+    name: IR Num 1
+    icon: mdi:numeric-1-box
+  switch_tv_ir_num_2:
+    name: IR Num 2
+    icon: mdi:numeric-2-box
+  switch_tv_ir_num_3:
+    name: IR Num 3
+    icon: mdi:numeric-3-box
+  switch_tv_ir_num_4:
+    name: IR Num 4
+    icon: mdi:numeric-4-box
+  switch_tv_ir_num_5:
+    name: IR Num 5
+    icon: mdi:numeric-5-box
+  switch_tv_ir_num_6:
+    name: IR Num 6
+    icon: mdi:numeric-6-box
+  switch_tv_ir_num_7:
+    name: IR Num 7
+    icon: mdi:numeric-7-box
+  switch_tv_ir_num_8:
+    name: IR Num 8
+    icon: mdi:numeric-8-box
+  switch_tv_ir_num_9:
+    name: IR Num 9
+    icon: mdi:numeric-9-box
+  switch_tv_ir_num_0:
+    name: IR Num 0
+    icon: mdi:numeric-0-box
+#
+############################################################################################################################### Kaden Air Conditioning
+#-------------------------
+#AC
+  switch_kaden_power:
+    name: Kaden Power
+    icon: mdi:power
+  switch_kaden_turbo:
+    name: Kaden Turbo
+    icon: mdi:truck-fast
+  switch_kaden_led:
+    name: Kaden Display
+    icon: mdi:counter
+#
+#
+############################################################################################################################### TEST for Kidbusta idea
+#----------------------------------------------------------------------------------------------------
+#
+#
+#TEST
+  switch_callum:
+    name: Callum
+    icon: mdi:smile
+  switch_asher:
+    name: Asher
+    icon: mdi:smile
+  switch_hendrix:
+    name: Hendrix
+    icon: mdi:smile

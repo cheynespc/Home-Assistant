@@ -1,0 +1,15 @@
+
+  nodered_flows:
+    title: Node-RED Flows
+    icon: mdi:nodejs
+    url: !secret my_web_address_nodered
+#
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: !secret my_web_address_configurator
+#
+  pihole:
+    title: Pi-hole
+    icon: mdi:block-helper
+    url: !secret my_web_address_pihole

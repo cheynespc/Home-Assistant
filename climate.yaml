@@ -1,0 +1,25 @@
+
+#
+  - platform: broadlink
+    host: 10.0.4.122
+    mac: !secret broadlink_rm3_mini_mac
+    name: Kaden Air Conditioner
+    ircodes_ini: 'broadlink_climate_codes/midea.ini'
+    min_temp: 17
+    max_temp: 30
+    target_temp: 25
+    target_temp_step: 1
+    temp_sensor: sensor.kitchen_temperature
+    default_operation: off
+    default_fan_mode: high
+    customize:
+      operations:
+        - off
+        - cool
+        - heat
+        - idle
+      fan_modes:
+        - low
+        - mid
+        - high
+        - auto

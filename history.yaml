@@ -1,0 +1,14 @@
+  exclude:
+    entities:
+      - sensor.date
+      - sensor.date__time
+      - sensor.time
+      - sun.sun
+      - sensor.sun_angle
+  include:
+    domains:
+      - light
+      - sensor
+      - switch
+      - device_tracker
+      - media_player

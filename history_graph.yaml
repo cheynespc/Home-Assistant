@@ -1,0 +1,55 @@
+
+  gr1:
+    name: Temperature
+    entities:
+      - sensor.realistic_kitchen_temperature
+      - sensor.bathroom_dht_11_temperature
+      - sensor.weather_temperature
+    hours_to_show: 36
+    refresh: 60
+  gr1_2:
+    name: Humidity
+    entities:
+      - sensor.kitchen_humidity
+      - sensor.bathroom_dht_11_humidity
+      - sensor.weather_humidity
+    hours_to_show: 36
+    refresh: 60
+  gr2:
+    name: AC Power usage
+    entities:
+      - sensor.current_power
+    hours_to_show: 12
+    refresh: 2
+  gr3:
+    name: Kitchen Motion
+    entities:
+      - binary_sensor.motion_sensor_158d0001a250d8
+    hours_to_show: 2
+    refresh: 15
+  gr:
+    name: Washer Dryer Power usage
+    entities:
+      - sensor.washer_current_power
+    hours_to_show: 6
+    refresh: 2
+  gr5:
+    name: Bathroom Motion
+    entities:
+      - binary_sensor.motion_sensor_158d0001a24ff6
+    hours_to_show: 2
+    refresh: 15
+#
+  gr21:
+    name: Living room Power 
+    entities:
+      - switch.plug_158d00024a54e6
+    hours_to_show: 2
+    refresh: 15
+  gr6:
+    name: Now Playing
+    entities:
+      - sensor.now_playing_name
+    hours_to_show: 12
+    refresh: 15
+#
