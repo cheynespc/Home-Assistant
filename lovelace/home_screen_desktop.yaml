@@ -1,0 +1,205 @@
+# cheynespc main screen desktop module 
+#
+title: Home
+views:
+  - title: Header
+    icon: mdi:home-variant
+    panel: true
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:bignumber-card
+            title: 
+            entity: sensor.time
+            scale: 30px
+          - type: horizontal-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: picture-glance
+                    title: Livingroom
+                    navigation_path: /lovelace/1
+                    entities:
+                      - light.yeelight_rgb_7811dc6840f6
+                      - light.ledrgb2_nodemcu03
+                      - climate.kaden_air_conditioner
+                      - entity: script.1532659272895
+                        tap_action: toggle
+                    image: /local/living.png
+                  - type: glance
+                    title: 
+                    column_width: calc(100% / 5)
+                    show_name: false
+                    show_state: true
+                    entities:
+                      - binary_sensor.motion_sensor_158d0001a250d8
+                      - binary_sensor.door_window_sensor_158d0001de8cdc
+                      - binary_sensor.door_window_sensor_158d0001de8c6b
+                      - sensor.illumination_158d0001a250d8
+                      - sensor.realistic_kitchen_temperature
+                      - type: vertical-stack
+              - type: vertical-stack
+                cards:
+                  - type: picture-glance
+                    title: Kitchen
+                    navigation_path: /lovelace/2
+                    entities:
+                      - light.kitchen_lamp
+                      - switch.kitchen_fan
+                      - light.ledrgb_nodemcu02
+                      - switch.kaden_led
+                      - script.1532998040612
+                    image: /local/kitchen.png
+                  - type: glance
+                    title: 
+                    column_width: calc(100% / 5)
+                    show_name: false
+                    show_state: true
+                    entities:
+                      - binary_sensor.motion_sensor_158d0001a250d8
+                      - binary_sensor.door_window_sensor_158d0001e45327
+                      - sensor.illumination_34ce00fb68e0
+                      - sensor.realistic_kitchen_temperature
+                      - sensor.kitchen_humidity
+                      - type: vertical-stack
+              - type: vertical-stack
+                cards:
+                  - type: picture-glance
+                    title: Bathroom
+                    navigation_path: /lovelace/3
+                    entities:
+                      - light.bathroom_lamp
+                      - light.gateway_light_34ce00fb68e0
+                    image: /local/bath.png
+                  - type: glance
+                    title: 
+                    column_width: calc(100% / 5)
+                    show_name: false
+                    show_state: true
+                    entities:
+                      - binary_sensor.motion_sensor_158d0001a24ff6
+                      - binary_sensor.door_window_sensor_158d0001de8dff
+                      - sensor.illumination_158d0001a24ff6
+                      - sensor.bathroom_dht_11_temperature
+                      - sensor.bathroom_dht_11_humidity
+#### START ##### FIRST PICTURE ELEMENT CHANGE BANNER WHEN TV SOURCE CHANGES ################################
+              - type: vertical-stack
+                cards:
+                  - type: picture-elements
+                    image: /local/tvpic.png
+                    elements:
+                      - type: image
+                        entity: switch.remote_freeview_on
+                        tap_action: toggle
+                        state_image:
+                          "off": /local/transparant.png
+                        state_image:
+                          "on": /local/freeviewbanner.png
+                        style:
+                          top: 50%
+                          left: 50%
+                          width: 100%
+                        navigation_path: /lovelace/1
+                      - type: image
+                        entity: switch.remote_ir_xbox
+                        tap_action: toggle
+                        state_image:
+                          "off": /local/transparant.png
+                        state_image:
+                          "on": /local/xboxbanner.png
+                        style:
+                          top: 50%
+                          left: 50%
+                          width: 100%
+                        navigation_path: /lovelace/1
+                      - type: image
+                        entity: switch.remote_ir_ps4
+                        tap_action: toggle
+                        state_image:
+                          "off": /local/transparant.png
+                        state_image:
+                          "on": /local/ps4banner.png
+                        style:
+                          top: 50%
+                          left: 50%
+                          width: 100%
+                        navigation_path: /lovelace/1
+                      - type: image
+                        entity: switch.remote_ir_kodi
+                        tap_action: toggle
+                        state_image:
+                          "off": /local/transparant.png
+                        state_image:
+                          "on": /local/kodibanner.png
+                        style:
+                          top: 50%
+                          left: 50%
+                          width: 100%
+                        navigation_path: /lovelace/1
+                      - type: image
+                        entity: input_boolean.switch_chromecast
+                        tap_action: toggle
+                        state_image:
+                          "off": /local/transparant.png
+                        state_image:
+                          "on": /local/chromebanner.png
+                        style:
+                          top: 50%
+                          left: 50%
+                          width: 100%
+                        navigation_path: /lovelace/1
+                      - type: image
+                        entity: switch.remote_freeview_on
+                        tap_action: toggle
+                        state_image:
+                          "off": /local/transparant.png
+                        state_image:
+                          "on": /local/freeviewbanner.png
+                        style:
+                          top: 50%
+                          left: 50%
+                          width: 100%
+                        navigation_path: /lovelace/1
+### END ##### FIRST PICTURE ELEMENT CHANGE BANNER WHEN TV SOURCE CHANGES ################################
+                  - type: glance
+                    title: 
+                    column_width: calc(100% / 5)
+                    show_name: false
+                    show_state: false
+                    entities:
+                      - entity: input_boolean.switch_ps4
+                        tap_action: toggle
+                      - entity: input_boolean.switch_xbox
+                        tap_action: toggle
+                      - entity: input_boolean.switch_tv
+                        tap_action: toggle
+                      - entity: input_boolean.switch_kodi
+                        tap_action: toggle
+                      - entity: input_boolean.switch_netflix
+                        tap_action: toggle
+                  - type: media-control
+                    entity: media_player.test_universal
+          - type: horizontal-stack
+            cards:
+              - type: picture
+                navigation_path: /lovelace/4
+                image: /local/haweatherbutton.jpg
+              - type: picture
+                navigation_path: /lovelace/5
+                image: /local/hadevicesbutton.jpg
+          - type: vertical-stack
+            cards:
+              - type: custom:monster-card
+                show_empty: false
+                card:
+                  type: glance
+                  column_width: calc(100% / 6)
+                  show_name: true
+                  show_state: false
+                  title: 
+                filter:
+                  include:
+                    - domain: light
+                      state: 'on'
+                    - entity_id: switch.kaden_led
+                      state: 'on'
