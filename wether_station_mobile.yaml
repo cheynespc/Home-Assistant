@@ -1,0 +1,85 @@
+#cheynespc wether station for mobile devices 
+  - title: Weather Conditions
+    icon: mdi:weather-partlycloudy
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: weather-forecast
+            entity: weather.openweathermap
+          - type: glance
+            show_name: true
+            column_width: calc(100% / 4)
+            title: Currently Indoors
+            entities:
+              - sensor.realistic_kitchen_temperature
+              - sensor.kitchen_humidity
+              - binary_sensor.door_window_sensor_158d0001e45327
+              - binary_sensor.door_window_sensor_158d0001de8c6b
+          - type: history-graph
+            title: Humidity
+            hours_to_show: 36
+            refresh_interval: 60
+            entities:
+              - sensor.kitchen_humidity
+              - sensor.bathroom_dht_11_humidity
+              - sensor.weather_humidity
+          - type: history-graph
+            title: Temperature
+            hours_to_show: 36
+            refresh_interval: 60
+            entities:
+              - sensor.realistic_kitchen_temperature
+              - sensor.bathroom_dht_11_temperature
+              - sensor.weather_temperature
+          - type: picture
+            navigation_path: /lovelace/11
+            image: /local/ha.jpg
+          - type: glance
+            show_name: true
+            column_width: calc(100% / 3)
+            title: Moisture
+            entities:
+              - sensor.weather_dewpoint_temperature
+              - sensor.weather_humidity
+              - sensor.weather_precipitation
+          - type: glance
+            show_name: true
+            column_width: calc(100% / 2)
+            title: Sun
+            entities:
+              - sun.sun
+              - sensor.sun_angle
+          - type: glance
+            title: Wind
+            column_width: calc(100% / 3)
+            show_name: true
+            entities:
+              - sensor.bom_port_macquarie_wind_direction
+              - sensor.bom_port_macquarie_wind_speed_kmh
+              - sensor.weather_pressure
+          - type: history-graph
+            title: Wind Direction
+            entities:
+              - sensor.bom_port_macquarie_wind_direction
+          - type: picture
+            image: https://www.bonnyhillsbeachhouse.com.au/surfcam_stream/surfcam.jpg
+          - type: picture
+            image: https://www.bonnyhillsbeachhouse.com.au/beachcam_stream/beachcam_image.jpg
+          - type: picture
+            image: https://www.bonnyhillsbeachhouse.com.au/weathercam_stream/weathercam.jpg
+          - type: picture
+            image: http://www.bom.gov.au/radar/IDR042.gif
+            navigation_path: http://www.bom.gov.au/products/IDR043.loop.shtml
+          - type: picture
+            image: http://www.bom.gov.au/radar/IDR00004.jpg
+            navigation_path: http://www.bom.gov.au/products/national_radar_sat.loop.shtml
+          - type: iframe
+            url: https://widget.coastalcoms.com/video/7c3cc779-daa6-48e6-9eed-c102efd59038
+            aspect_ratio: 100%
+          - type: iframe
+            url: https://widget.coastalcoms.com/video/f4dfde16-760e-4a34-b455-43519186eeeb
+            aspect_ratio: 100%
+#
+#
+#
+#
